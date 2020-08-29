@@ -1,6 +1,7 @@
 # Connectifire
 
 Connectifire is a social media platform that allows users to connect with each.
+Access the website here: https://connectifire.herokuapp.com/
 
 ## Description
 
