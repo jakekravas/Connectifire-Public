@@ -75,4 +75,4 @@ const DeleteModal = ({ textt, deletePost }) => {
   );
 }
 
-export default connect(null, { deletePost })(DeleteModal);
+export default connect(null, { deletePost })(DeleteModal)
