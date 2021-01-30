@@ -145,12 +145,12 @@ const MyProfileInfo = ({ updateProfile, errors, profile: {name, username, bio, a
       <Fragment>
         <div style={editStyles}/>
         <div style={{paddingLeft: "24px", paddingRight: "24px", margin: "0"}} className="file-field input-field">
-          <div class="btn blue darken-4">
+          <div className="btn blue darken-4">
             <span>Change Cover</span>
             <input onChange={coverChange} type="file"/>
           </div>
-          <div class="file-path-wrapper">
-            <input class="file-path validate" type="text"/>
+          <div className="file-path-wrapper">
+            <input className="file-path validate" type="text"/>
           </div>
         </div>
           { formCover &&
@@ -160,14 +160,14 @@ const MyProfileInfo = ({ updateProfile, errors, profile: {name, username, bio, a
           <img style={aviEditStyle} className="avi-profile" src={aviLoading ? loader : formAvatar} alt="avatar"/>
         </div>
         <div style={{paddingTop: 0, marginTop: 0}} className="card-content profile-content">
-          <div class="file-field input-field">
+          <div className="file-field input-field">
             <div>
-              <div class="btn blue darken-4">
+              <div className="btn blue darken-4">
                 <span>Change Avatar</span>
                 <input onChange={photoChange} type="file"/>
               </div>
-              <div class="file-path-wrapper">
-                <input class="file-path validate" type="text"/>
+              <div className="file-path-wrapper">
+                <input className="file-path validate" type="text"/>
               </div>
             </div>
           </div>
@@ -208,7 +208,7 @@ const MyProfileInfo = ({ updateProfile, errors, profile: {name, username, bio, a
               <Alert className="alert ud" isOpen={displayErr}>{err.msg}</Alert>
             ))
           ) : <Alert className="alert-saved ud" isOpen={displaySaved}>
-                <i class="fas fa-check-circle"/> Profile Saved
+                <i className="fas fa-check-circle"/> Profile Saved
               </Alert>}
           {/* <p className="profile-ff">
             <span className="bold-text">124</span>

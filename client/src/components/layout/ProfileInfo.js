@@ -24,11 +24,11 @@ const ProfileInfo = ({ profileToView: { name, username, bio, avatar, cover, foll
         {
           followers.filter(f => f.followGiver === profile.profile._id && f.followReceiver === _id).length === 1 ?
             <button onClick={onFollow} className="btn edit-btn follow-btn">
-              <i class="fas fa-user-minus follow-icon"/> Unfollow
+              <i className="fas fa-user-minus follow-icon"/> Unfollow
             </button>
           :
             <button onClick={onFollow} className="btn edit-btn follow-btn">
-              <i class="fas fa-user-plus follow-icon"/> Follow
+              <i className="fas fa-user-plus follow-icon"/> Follow
             </button>
         }
       </div>

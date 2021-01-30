@@ -33,19 +33,19 @@ const LikedPost = ({ post: {_id, name, username, avatar, text, likes}, user, tog
           <p className="grey-text text-darken-1 m-0">@{username}</p>
           &nbsp;<span className="grey-text text-darken-1">&middot;</span>&nbsp;
           <p className="grey-text text-darken-1 m-0">2h</p>
-          <i class="fas fa-angle-down grey-text text-darken-1"/>
+          <i className="fas fa-angle-down grey-text text-darken-1"/>
         </div>
         <div className="post-text-container">
           <p className="m-0">{text}</p>
         </div>
         <div className="post-actions-container grey-text text-darken-2">
-          {/* <span><i class="far fa-clock"/> 12/25/1997</span> */}
-          <span><i class="far fa-comment pointer"/></span>
+          {/* <span><i className="far fa-clock"/> 12/25/1997</span> */}
+          <span><i className="far fa-comment pointer"/></span>
           <span onClick={onLike}>
             {likes.length > 0 && likes.length}&nbsp;
-            <i class={!liked ? "far fa-thumbs-up pointer" : "fas fa-thumbs-up pointer"}/>
+            <i className={!liked ? "far fa-thumbs-up pointer" : "fas fa-thumbs-up pointer"}/>
           </span>
-          <span><i class="far fa-trash-alt pointer"/></span>
+          <span><i className="far fa-trash-alt pointer"/></span>
         </div>
       </div>
     </div>

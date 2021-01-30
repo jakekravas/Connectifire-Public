@@ -46,7 +46,7 @@ const DeleteModal = ({ textt, deletePost }) => {
 
   return (
     <div>
-      <span className="modal-trigger" data-target="modal2"><i class="far fa-trash-alt pointer"/></span>
+      <span className="modal-trigger" data-target="modal2"><i className="far fa-trash-alt pointer"/></span>
 
       <div
         ref={Modal => {Modal = Modal;}}
@@ -58,7 +58,7 @@ const DeleteModal = ({ textt, deletePost }) => {
                       If you want Fixed Footer Modal then add
                       modal-fixed-footer to the "modal" div*/}
         <div className="modal-content center-align">
-          <i style={{fontSize: "50px"}} class="fas fa-ban red-text"/>
+          <i style={{fontSize: "50px"}} className="fas fa-ban red-text"/>
           <br/>
           <h5 className="flow-text">Are you sure you want to delete this post?</h5>
         </div>
@@ -75,4 +75,4 @@ const DeleteModal = ({ textt, deletePost }) => {
   );
 }
 
-export default connect(null, { deletePost })(DeleteModal)
+export default connect(null, { deletePost })(DeleteModal);

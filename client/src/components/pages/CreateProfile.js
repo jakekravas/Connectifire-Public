@@ -122,26 +122,26 @@ const CreateProfile = ({profile, errors, createProfile, auth }) => {
               )}
               <span className="card-title prim-text">Create Your Profile</span>
               <div style={editStyles}/>
-              <div class="file-field input-field">
-                <div class="btn blue darken-4">
+              <div className="file-field input-field">
+                <div className="btn blue darken-4">
                   <span>Add Cover Photo</span>
                   <input onChange={coverChange} type="file"/>
                 </div>
-                <div class="file-path-wrapper">
-                  <input class="file-path validate" type="text"/>
+                <div className="file-path-wrapper">
+                  <input className="file-path validate" type="text"/>
                 </div>
               </div>
                 {cover && !coverLoading && <button onClick={removeCover} style={{marginBottom: "10px"}} className="btn red darken-1">Remove Cover Photo</button>}
                 <div>
                   <img className="avi-update" src={aviLoading ? loader : avatar} alt="avatar"/>
                 </div>
-                <div class="file-field input-field">
-                  <div class="btn blue darken-4">
+                <div className="file-field input-field">
+                  <div className="btn blue darken-4">
                     <span>Add Avatar</span>
                     <input onChange={photoChange} type="file"/>
                   </div>
-                  <div class="file-path-wrapper">
-                    <input class="file-path validate" type="text"/>
+                  <div className="file-path-wrapper">
+                    <input className="file-path validate" type="text"/>
                   </div>
                 </div>
                 {avatar !== "https://res.cloudinary.com/dyyumq7yz/image/upload/v1594520134/photos/p8fhuove0artibtnm2oc.png" && !aviLoading && <button onClick={removeAvatar} className="btn red darken-1">Remove Avatar</button>}
