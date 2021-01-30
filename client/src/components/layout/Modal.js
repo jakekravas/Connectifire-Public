@@ -4,7 +4,11 @@ import { createPost, getLoggedInPosts } from "../../actions/post";
 import M from "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
 
-const Modal = ({ createPost, getLoggedInPosts, profile: {user} }) => {
+const Modal = ({
+  createPost,
+  getLoggedInPosts,
+  profile: {user}
+}) => {
   useEffect(() => {
     const options = {
       onOpenStart: () => {

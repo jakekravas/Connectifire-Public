@@ -6,8 +6,12 @@ import loader from "../../img/loading-gif.gif";
 import {uploadLink, placeholderImageURL} from "../../utils/cdl2";
 import { Alert } from "reactstrap";
 
-// todo - start this
-const EditProfile = ({profile: {profile, loading}, errors, updateProfile }) => {
+const EditProfile = ({
+  profile: {profile, loading},
+  errors,
+  updateProfile
+}) => {
+  
   const [formData, setFormData] = useState({
     name: "",
     username: "",

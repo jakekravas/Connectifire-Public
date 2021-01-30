@@ -4,7 +4,11 @@ import { updateProfile } from "../../actions/profile";
 import loader from "../../img/loading-gif.gif";
 import { Alert } from "reactstrap";
 
-const MyProfileInfo = ({ updateProfile, errors, profile: {name, username, bio, avatar, cover, followers, following}}) => {
+const MyProfileInfo = ({
+  updateProfile,
+  errors,
+  profile: {name, username, bio, avatar, cover, followers, following}
+}) => {
   const [showEdit, setShowEdit] = useState(false);
   const [aviLoading, setAviLoading] = useState(false);
   const [displayErr, setDisplayErr] = useState(false);

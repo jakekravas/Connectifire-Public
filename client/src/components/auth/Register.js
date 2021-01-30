@@ -4,7 +4,11 @@ import { connect } from "react-redux";
 import { register } from "../../actions/auth";
 import { Alert } from "reactstrap";
 
-const Register = ({ isAuthenticated, errors, register }) => {
+const Register = ({
+  isAuthenticated,
+  errors,
+  register
+}) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",

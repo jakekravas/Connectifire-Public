@@ -3,7 +3,12 @@ import { connect } from "react-redux";
 import { toggleLikePost, getLikedPosts} from "../../actions/post";
 import M from "materialize-css/dist/js/materialize.min.js";
 
-const LikedPost = ({ post: {_id, name, username, avatar, text, likes}, user, toggleLikePost, getLikedPosts}) => {
+const LikedPost = ({
+  post: { _id, name, username, avatar, text, likes },
+  user,
+  toggleLikePost,
+  getLikedPosts
+}) => {
   const [liked, setLiked] = useState(false);
 
   useEffect(() => {

@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { toggleFollow, loadProfile } from "../../actions/profile";
 
-const ProfileItem = ({ profile: {_id, name, username, avatar, bio}, toggleFollow, loadProfile }) => {
+const ProfileItem = ({
+  profile: {_id, name, username, avatar, bio},
+  toggleFollow,
+  loadProfile
+}) => {
   const [following, setFollowing] = useState(false);
 
   const onFollow = async () => {

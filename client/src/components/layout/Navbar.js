@@ -5,7 +5,10 @@ import logo from "../../img/connectifire-logo.png"
 import { logout } from "../../actions/auth";
 import { connect } from "react-redux";
 
-const Navbar = ({ logout, isAuthenticated }) => {
+const Navbar = ({
+  logout,
+  isAuthenticated
+}) => {
   useEffect(() => {
     let sidenav = document.querySelector('#slide-out');
     M.Sidenav.init(sidenav, {});

@@ -3,7 +3,12 @@ import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import Preloader from "../layout/Preloader";
 
-const Home = ({profile, loading, isAuthenticated}) => {
+const Home = ({
+  profile,
+  loading,
+  isAuthenticated
+}) => {
+  
   if (!loading && isAuthenticated && profile.profile === null) {
     return <Redirect to="/createprofile"/>
   }

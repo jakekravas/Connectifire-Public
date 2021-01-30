@@ -3,8 +3,12 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { toggleLikePost, getFollowingPosts } from "../../actions/post"
 
-const FeedPost = ({ post: {name, username, avatar, text, likes, date, _id},
-  profile: {profile, loading}, toggleLikePost, getFollowingPosts }) => {
+const FeedPost = ({
+  post: { name, username, avatar, text, likes, date, _id},
+  profile: { profile, loading},
+  toggleLikePost,
+  getFollowingPosts
+}) => {
   
   const [liked, setLiked] = useState(false);
 

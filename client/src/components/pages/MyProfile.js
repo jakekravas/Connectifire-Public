@@ -9,7 +9,17 @@ import Preloader from "../layout/Preloader";
 import M from "materialize-css/dist/js/materialize.min.js";
 import Modal from "../layout/Modal";
 
-const MyProfile = ({ getLoggedInPosts, getLikedPosts, isAuthenticated, postLoading, authLoading, loading, profile, post: {posts, likedPosts} }) => {
+const MyProfile = ({
+  getLoggedInPosts,
+  getLikedPosts,
+  isAuthenticated,
+  postLoading,
+  authLoading,
+  loading,
+  profile,
+  post: {posts, likedPosts}
+}) => {
+  
   useEffect(() => {
     let tabElems = document.querySelector('.tabs');
     let modalElems = document.querySelectorAll('.modal');

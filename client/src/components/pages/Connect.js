@@ -4,7 +4,13 @@ import { connect } from "react-redux";
 import ProfileItem from "../layout/ProfileItem"
 import { getAllProfiles } from "../../actions/profile";
 
-const Connect = ({ profile: {profiles, loading}, getAllProfiles, authLoading, isAuthenticated }) => {
+const Connect = ({
+  profile: {profiles, loading},
+  getAllProfiles,
+  authLoading,
+  isAuthenticated
+}) => {
+  
   useEffect(() => {
     getAllProfiles();
   }, []);

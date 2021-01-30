@@ -6,7 +6,13 @@ import loader from "../../img/loading-gif.gif";
 import {uploadLink, placeholderImageURL} from "../../utils/cdl2";
 import { Alert } from "reactstrap";
 
-const CreateProfile = ({profile, errors, createProfile, auth }) => {
+const CreateProfile = ({
+  profile,
+  errors,
+  createProfile,
+  auth
+}) => {
+  
   const [formData, setFormData] = useState({
     name: "",
     username: "",

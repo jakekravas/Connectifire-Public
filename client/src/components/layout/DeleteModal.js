@@ -4,7 +4,10 @@ import { deletePost } from "../../actions/post";
 import M from "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
 
-const DeleteModal = ({ textt, deletePost }) => {
+const DeleteModal = ({
+  textt,
+  deletePost
+}) => {
   useEffect(() => {
     const options = {
       onOpenStart: () => {

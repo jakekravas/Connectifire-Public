@@ -2,7 +2,12 @@ import React, { Fragment } from 'react';
 import { connect } from "react-redux";
 import { toggleFollow, getProfileByUsername, loadProfile } from "../../actions/profile";
 
-const ProfileInfo = ({ profileToView: { name, username, bio, avatar, cover, followers, following, _id }, toggleFollow, profile, getProfileByUsername, loadProfile }) => {
+const ProfileInfo = ({
+  profileToView: { name, username, bio, avatar, cover, followers, following, _id },toggleFollow,
+  profile,
+  getProfileByUsername,
+  loadProfile
+}) => {
 
   let styles = {
     background: `url(${cover ? cover : "#f6f6f6"}) no-repeat center center/cover`,

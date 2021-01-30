@@ -5,7 +5,12 @@ import { getFollowingPosts } from "../../actions/post";
 import FeedPost from "../layout/FeedPost";
 import loadingGif from "../../img/loading-gif.gif";
 
-const Feed = ({ post: { postsOfFollowing, loading }, authLoading, isAuthenticated, getFollowingPosts }) => {
+const Feed = ({
+  post: { postsOfFollowing, loading },
+  authLoading,
+  isAuthenticated,
+  getFollowingPosts
+}) => {
   
   const [receivedPosts, setReceivedPosts] = useState(false);
   const [isEmpty, setIsEmpty] = useState(false);

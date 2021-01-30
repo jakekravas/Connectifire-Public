@@ -3,7 +3,12 @@ import { connect } from "react-redux";
 import { toggleLikePost } from "../../actions/post"
 import { getPostsByUsername } from "../../actions/post";
 
-const ProfilePost = ({ profile: {profile: {user}}, post: { _id, text, name, username, avatar, likes }, toggleLikePost, getPostsByUsername }) => {
+const ProfilePost = ({
+  profile: {profile: {user}},
+  post: { _id, text, name, username, avatar, likes },
+  toggleLikePost,
+  getPostsByUsername
+}) => {
 
   const [liked, setLiked] = useState(false);
 

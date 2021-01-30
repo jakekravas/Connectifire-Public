@@ -9,7 +9,16 @@ import LikedPostOfUser from "../layout/LikedPostOfUser";
 import Preloader from "../layout/Preloader";
 import M from "materialize-css/dist/js/materialize.min.js"
 
-const Profile = ({ match, auth, getProfileByUsername, getPostsByUsername, getLikedPostsOfUser, profile: {profileToView, loading, profile}, post: {postsToView, likedPostsOfUser}, postLoading, loadProfile }) => {
+const Profile = ({
+  match,
+  auth,
+  getProfileByUsername,
+  getPostsByUsername,
+  getLikedPostsOfUser,
+  profile: {profileToView, loading, profile},
+  post: {postsToView, likedPostsOfUser},postLoading,
+  loadProfile
+}) => {
 
   useEffect(() => {
     getProfileByUsername(match.params.id);
