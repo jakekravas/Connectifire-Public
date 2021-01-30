@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { createProfile } from "../../actions/profile";
 import loader from "../../img/loading-gif.gif";
-import {cdl, cdld} from "../../utils/cdl2";
+import {uploadLink, placeholderImageURL} from "../../utils/cdl2";
 import { Alert } from "reactstrap";
 
 const CreateProfile = ({profile, errors, createProfile, auth }) => {
@@ -11,8 +11,7 @@ const CreateProfile = ({profile, errors, createProfile, auth }) => {
     name: "",
     username: "",
     bio: "",
-    avatar: cdld,
-    // avatar: "https://res.cloudinary.com/dyyumq7yz/image/upload/v1594520134/photos/p8fhuove0artibtnm2oc.png",
+    avatar: placeholderImageURL,
     cover: ""
   });
   const { name, username, bio, avatar, cover } = formData;
@@ -50,8 +49,7 @@ const CreateProfile = ({profile, errors, createProfile, auth }) => {
       data.append("file", e.target.files[0]);
       data.append("upload_preset", "photos");
       const res = await fetch(
-        cdl,
-        // "https://api.cloudinary.com/v1_1/dyyumq7yz/image/upload",
+        uploadLink,
         {
           method: "POST",
           body: data
@@ -65,16 +63,14 @@ const CreateProfile = ({profile, errors, createProfile, auth }) => {
 
   const photoChange = async e => {
     if (e.target.files.length < 1) {
-      setFormData({...formData, avatar: cdld});
-      // setFormData({...formData, avatar: "https://res.cloudinary.com/dyyumq7yz/image/upload/v1594520134/photos/p8fhuove0artibtnm2oc.png"});
+      setFormData({...formData, avatar: placeholderImageURL});
     } else {
       setAviLoading(true);
       const data = new FormData();
       data.append("file", e.target.files[0]);
       data.append("upload_preset", "photos");
       const res = await fetch(
-        cdl,
-        // "https://api.cloudinary.com/v1_1/dyyumq7yz/image/upload",
+        uploadLink,
         {
           method: "POST",
           body: data
@@ -89,8 +85,7 @@ const CreateProfile = ({profile, errors, createProfile, auth }) => {
   const removeAvatar = e => {
     e.preventDefault();
     setAviLoading(true);
-    setFormData({...formData, avatar: cdld});
-    // setFormData({...formData, avatar: "https://res.cloudinary.com/dyyumq7yz/image/upload/v1594520134/photos/p8fhuove0artibtnm2oc.png"});
+    setFormData({...formData, avatar: placeholderImageURL});
     setAviLoading(false);
   }
 

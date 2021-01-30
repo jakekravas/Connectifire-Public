@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 
-const CreateOrUpdateProfile = ({ profile }) => {
+const CreateOrUpdateProfile = () => {
   return (
     <div className="container">
       <h3>Create Your Profile</h3>

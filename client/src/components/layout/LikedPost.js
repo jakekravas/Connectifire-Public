@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from "react-redux";
-import { toggleLikePost } from "../../actions/post"
-import { getPostsByUsername } from "../../actions/post";
+import { toggleLikePost, getLikedPosts} from "../../actions/post";
+import M from "materialize-css/dist/js/materialize.min.js";
 
-const ProfilePost = ({ profile: {profile: {user}}, post: { _id, text, name, username, avatar, likes }, toggleLikePost, getPostsByUsername }) => {
-
+const LikedPost = ({ post: {_id, name, username, avatar, text, likes}, user, toggleLikePost, getLikedPosts}) => {
   const [liked, setLiked] = useState(false);
 
   useEffect(() => {
+    let elems = document.querySelectorAll('.modal');
+    M.Modal.init(elems, {});
+
     if (likes.filter(l => l.user === user).length === 1) {
       setLiked(true);
     } else {
@@ -17,8 +19,7 @@ const ProfilePost = ({ profile: {profile: {user}}, post: { _id, text, name, user
 
   const onLike = async () => {
     await toggleLikePost(_id);
-    getPostsByUsername(username);
-    setLiked(!liked);
+    getLikedPosts();
   }
 
   return (
@@ -38,19 +39,17 @@ const ProfilePost = ({ profile: {profile: {user}}, post: { _id, text, name, user
           <p className="m-0">{text}</p>
         </div>
         <div className="post-actions-container grey-text text-darken-2">
+          {/* <span><i class="far fa-clock"/> 12/25/1997</span> */}
           <span><i class="far fa-comment pointer"/></span>
           <span onClick={onLike}>
             {likes.length > 0 && likes.length}&nbsp;
             <i class={!liked ? "far fa-thumbs-up pointer" : "fas fa-thumbs-up pointer"}/>
           </span>
+          <span><i class="far fa-trash-alt pointer"/></span>
         </div>
       </div>
     </div>
   )
 }
 
-const mapStateToProps = state => ({
-  profile: state.profile
-});
-
-export default connect(mapStateToProps, { toggleLikePost, getPostsByUsername })(ProfilePost)
+export default connect(null, { toggleLikePost, getLikedPosts })(LikedPost)

@@ -2,17 +2,19 @@ import React, { useEffect, Fragment } from 'react';
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { getProfileByUsername, loadProfile } from "../../actions/profile";
-import { getPostsByUsername } from "../../actions/post";
+import { getPostsByUsername, getLikedPostsOfUser } from "../../actions/post";
 import ProfileInfo from "../layout/ProfileInfo";
 import ProfilePost from "../layout/ProfilePost";
+import LikedPostOfUser from "../layout/LikedPostOfUser";
 import Preloader from "../layout/Preloader";
 import M from "materialize-css/dist/js/materialize.min.js"
 
-const Profile = ({ match, auth, getProfileByUsername, getPostsByUsername, profile: {profileToView, loading, profile}, post: {postsToView}, postLoading, loadProfile }) => {
+const Profile = ({ match, auth, getProfileByUsername, getPostsByUsername, getLikedPostsOfUser, profile: {profileToView, loading, profile}, post: {postsToView, likedPostsOfUser}, postLoading, loadProfile }) => {
 
   useEffect(() => {
     getProfileByUsername(match.params.id);
     getPostsByUsername(match.params.id);
+    // getLikedPostsOfUser(match.params.id);
     if (profile === null) {
       loadProfile();
     }
@@ -26,9 +28,15 @@ const Profile = ({ match, auth, getProfileByUsername, getPostsByUsername, profil
     return <Redirect to="/login"/>
   }
 
+  const likeTabClick = () => {
+    getLikedPostsOfUser(profileToView.username);
+  }
+
   return (
     <Fragment>
-      {loading || profileToView === null || profile === null ? <span>Loading...</span> : 
+      {/* {loading || profileToView === null || profile === null ? <span>Loading...</span> :  */}
+      {loading || profileToView === null || profile === null ?
+      <div style={{textAlign:"center"}}><Preloader/></div> : 
       <div className="container">
         <div className="row">
           <div className="col s12 m10 offset-m1">
@@ -40,31 +48,45 @@ const Profile = ({ match, auth, getProfileByUsername, getPostsByUsername, profil
               <div className="row">
                 <div className="col s12">
                   <ul className="tabs">
-                    <li className="tab col s4">
+                    <li className="tab col s6">
                       <a href="#tab1">Posts</a>
                     </li>
-                    <li className="tab col s4">
-                      <a href="#tab2">Media</a>
-                    </li>
-                    <li className="tab col s4">
-                      <a href="#tab3">Likes</a>
+                    <li onClick={likeTabClick} className="tab col s6">
+                      <a href="#tab2">Likes</a>
                     </li>
                   </ul>
                 </div>
                 <div id="tab1" className="col s12">
-                  {postsToView && !postLoading ? postsToView.map(post => (
-                    // <p>{post.text}</p>
+                  {/* {postsToView && !postLoading ? postsToView.map(post => (
                     <ProfilePost
                       key={post._id}
                       post={post}
                     />
-                  )) : <Preloader/>}
+                  )) : <Preloader/>} */}
+                  {postsToView && !postLoading && postsToView.map(post => (
+                    <ProfilePost
+                      key={post._id}
+                      post={post}
+                    />
+                  ))}
                 </div>
                 <div id="tab2" className="col s12">
-                  
-                </div>
-                <div id="tab3" className="col s12">
-                  
+                  {/* {likedPostsOfUser && !postLoading ? likedPostsOfUser.map(post => (
+                    <LikedPostOfUser
+                      key={post._id}
+                      post={post}
+                      user={profile.user}
+                      pftv={profileToView}
+                    />
+                  )) : <Preloader/>} */}
+                  {likedPostsOfUser && !postLoading && likedPostsOfUser.map(post => (
+                    <LikedPostOfUser
+                      key={post._id}
+                      post={post}
+                      user={profile.user}
+                      pftv={profileToView}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
@@ -86,4 +108,4 @@ const mapStateToProps = state => ({
   postLoading: state.post.loading
 })
 
-export default connect(mapStateToProps, { getProfileByUsername, getPostsByUsername, loadProfile })(Profile)
+export default connect(mapStateToProps, { getProfileByUsername, getPostsByUsername, loadProfile, getLikedPostsOfUser })(Profile)

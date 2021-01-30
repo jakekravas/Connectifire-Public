@@ -75,6 +75,7 @@ body {
 }
 
 .avi-profile {
+  object-fit: cover;
   border-radius: 50%;
   height: 120px;
   width: 120px;
@@ -200,7 +201,7 @@ body {
   padding-bottom: 10px;
 }
 
-#connect-header, #feed-header {
+#connect-header {
   padding-left: 22px;
   margin-top: 90px;
 }
@@ -209,7 +210,13 @@ body {
   padding-top: 20px;
 }
 
+.empty-feed {
+  color: rgb(202, 202, 202);
+  font-size: 80px;
+}
+
 .avi-post {
+  object-fit: cover;
   border-radius: 50%;
   height: 45px;
   width: 45px;
@@ -226,6 +233,10 @@ body {
   width: 90%;
   display: flex;
   justify-content: space-between;
+}
+
+.post-name:hover {
+  text-decoration: underline;
 }
 
 .m-0 {
@@ -281,6 +292,10 @@ body {
 .dm-footer {
   display: flex;
   justify-content: center;
+}
+
+.liked-post-link:hover {
+  text-decoration: underline;
 }
 
 /* .input-field input[type=text]:focus + label, .materialize-textarea:focus:not([readonly]) + label { */
@@ -351,6 +366,9 @@ box-shadow: 0 1px 0 0 #1a237e !important;
 @media screen and (max-width: 500px) { 
   .post-content {
     width: 87%;
+  }
+  .post-name {
+    font-size: 12px;
   }
   .list-bio {
     display: none;

@@ -29,7 +29,7 @@ const Login = ({isAuthenticated, errors, login }) => {
   }
 
   if (isAuthenticated) {
-    return <Redirect to="/testhome"/>
+    return <Redirect to="/home"/>
   }
 
   return (

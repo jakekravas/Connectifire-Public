@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { updateProfile } from "../../actions/profile";
 import loader from "../../img/loading-gif.gif";
-import {cdl, cdld} from "../../utils/cdl2";
+import {uploadLink, placeholderImageURL} from "../../utils/cdl2";
 import { Alert } from "reactstrap";
 
 // todo - start this
@@ -36,14 +36,14 @@ const EditProfile = ({profile: {profile, loading}, errors, updateProfile }) => {
   
   const photoChange = async e => {
     if (e.target.files.length < 1) {
-      setFormData({...formData, avatar: cdl});
+      setFormData({...formData, avatar: uploadLink});
     } else {
       setAviLoading(true);
       const data = new FormData();
       data.append("file", e.target.files[0]);
       data.append("upload_preset", "photos");
       const res = await fetch(
-        cdld,
+        placeholderImageURL,
         {
           method: "POST",
           body: data
@@ -58,7 +58,7 @@ const EditProfile = ({profile: {profile, loading}, errors, updateProfile }) => {
   const removeAvatar = e => {
     e.preventDefault();
     setAviLoading(true);
-    setFormData({...formData, avatar: cdl});
+    setFormData({...formData, avatar: uploadLink});
     setAviLoading(false);
   }
 
@@ -91,7 +91,7 @@ const EditProfile = ({profile: {profile, loading}, errors, updateProfile }) => {
                     onChange={photoChange}
                   />
                 </div>
-                {avatar !== cdld && !aviLoading && <button onClick={removeAvatar}>Remove Avatar</button>}
+                {avatar !== placeholderImageURL && !aviLoading && <button onClick={removeAvatar}>Remove Avatar</button>}
               <div className="input-field">
                 <input onChange={onChange} type="text" name="name" id="name"/>
                 <label htmlFor="name">Name</label>

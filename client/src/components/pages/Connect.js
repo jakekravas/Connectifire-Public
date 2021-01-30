@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import ProfileItem from "../layout/ProfileItem"
 import { getAllProfiles } from "../../actions/profile";
 
-const Connect = ({ profile: {profiles, loading}, getAllProfiles, isAuthenticated }) => {
+const Connect = ({ profile: {profiles, loading}, getAllProfiles, authLoading, isAuthenticated }) => {
   useEffect(() => {
     getAllProfiles();
   }, []);
 
-  if (!isAuthenticated) {
+  if (!isAuthenticated && !authLoading) {
     return <Redirect to="/login"/>
   }
 
@@ -35,6 +35,7 @@ const Connect = ({ profile: {profiles, loading}, getAllProfiles, isAuthenticated
 
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,
+  authLoading: state.auth.loading,
   profile: state.profile
 });
 

@@ -9,12 +9,14 @@ const FeedPost = ({ post: {name, username, avatar, text, likes, date, _id},
   const [liked, setLiked] = useState(false);
 
   useEffect(() => {
-    if (likes.filter(like => like.user === profile.user).length === 1) {
-      setLiked(true);
-    } else {
-      setLiked(false);
+    if (profile !== null) {
+      if (likes.filter(like => like.user === profile.user).length === 1) {
+        setLiked(true);
+      } else {
+        setLiked(false);
+      }
     }
-  }, [likes]);
+  }, [likes, profile]);
 
   const onLike = async () => {
     toggleLikePost(_id);
@@ -28,20 +30,20 @@ const FeedPost = ({ post: {name, username, avatar, text, likes, date, _id},
       </Link>
       <div className="post-content">
         <div className="post-user-container">
-          <Link className="bold-text m-0" to={`/profile/${username}`}>{name}</Link>&nbsp;&nbsp;
+          <Link className="bold-text m-0 post-name" to={`/profile/${username}`}>{name}</Link>&nbsp;&nbsp;
           <Link className="grey-text text-darken-1 m-0" to={`/profile/${username}`}>@{username}</Link>
           &nbsp;<span className="grey-text text-darken-1">&middot;</span>&nbsp;
           <p className="grey-text text-darken-1 m-0">2h</p>
-          <i class="fas fa-angle-down grey-text text-darken-1"/>
+          <i className="fas fa-angle-down grey-text text-darken-1"/>
         </div>
         <div className="post-text-container">
           <p className="m-0">{text}</p>
         </div>
         <div className="post-actions-container grey-text text-darken-2">
-          <span><i class="far fa-comment pointer"/></span>
+          <span><i className="far fa-comment pointer"/></span>
           <span onClick={onLike}>
             {likes.length > 0 && likes.length}&nbsp;
-            <i class={!liked ? "far fa-thumbs-up pointer" : "fas fa-thumbs-up pointer"}/>
+            <i className={!liked ? "far fa-thumbs-up pointer" : "fas fa-thumbs-up pointer"}/>
           </span>
         </div>
       </div>

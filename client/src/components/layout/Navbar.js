@@ -37,7 +37,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
     <nav className="nav-bg">
       <div className="container">
         <div className="nav-wrapper">
-          <Link to="/testhome" className="brand-logo">
+          <Link to="/home" className="brand-logo">
             <img src={logo} alt="logo" id="logo"/>
           </Link>
           <Link to="/" data-target="slide-out" className="button-collapse sidenav-trigger">

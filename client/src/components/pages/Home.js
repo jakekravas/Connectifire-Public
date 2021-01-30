@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import loadingGif from "../../img/loading-gif.gif";
+import Preloader from "../layout/Preloader";
 
-const TestHome = ({profile, loading, isAuthenticated}) => {
+const Home = ({profile, loading, isAuthenticated}) => {
   if (!loading && isAuthenticated && profile.profile === null) {
     return <Redirect to="/createprofile"/>
   }
@@ -16,11 +16,7 @@ const TestHome = ({profile, loading, isAuthenticated}) => {
     return <Redirect to="/login"/>
   }
 
-  return (
-    <div>
-      <img src={loadingGif} alt="loading"/>
-    </div>
-  )
+  return <Preloader/>
 }
 
 const mapStateToProps = state => ({
@@ -29,4 +25,4 @@ const mapStateToProps = state => ({
   profile: state.profile
 });
 
-export default connect(mapStateToProps, {})(TestHome)
+export default connect(mapStateToProps, {})(Home)

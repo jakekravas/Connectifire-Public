@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from "react-redux";
-import { toggleLikePost, getLoggedInPosts, deletePost } from "../../actions/post";
+import { toggleLikePost, getLoggedInPosts, getLikedPosts, deletePost } from "../../actions/post";
 import M from "materialize-css/dist/js/materialize.min.js";
 
-const MyProfilePost = ({ post: {_id, text, likes}, placeholderAvi, profile: {name, username, avatar, user}, toggleLikePost, getLoggedInPosts, deletePost}) => {
+const MyProfilePost = ({ post: {_id, text, likes}, profile: {name, username, avatar, user}, toggleLikePost, getLoggedInPosts, deletePost}) => {
   const [liked, setLiked] = useState(false);
 
   useEffect(() => {
@@ -20,6 +20,7 @@ const MyProfilePost = ({ post: {_id, text, likes}, placeholderAvi, profile: {nam
   const onLike = async () => {
     await toggleLikePost(_id);
     getLoggedInPosts(user);
+    getLikedPosts();
   }
   
   const onDelete = async () => {
@@ -34,14 +35,14 @@ const MyProfilePost = ({ post: {_id, text, likes}, placeholderAvi, profile: {nam
   return (
     <div className="post-container">
       <div>
-        <img className="avi-post" src={avatar ? avatar : placeholderAvi} alt="avatar"/>
+        <img className="avi-post" src={avatar} alt="avatar"/>
       </div>
       <div className="post-content">
         <div className="post-user-container">
-          <p className="bold-text m-0">{name}</p>&nbsp;&nbsp;
-          <p className="grey-text text-darken-1 m-0">@{username}</p>
+          <p className="bold-text m-0 post-name">{name}</p>&nbsp;&nbsp;
+          <p className="grey-text text-darken-1 m-0 post-name">@{username}</p>
           &nbsp;<span className="grey-text text-darken-1">&middot;</span>&nbsp;
-          <p className="grey-text text-darken-1 m-0">2h</p>
+          <p className="grey-text text-darken-1 m-0 post-name">2h</p>
           <i class="fas fa-angle-down grey-text text-darken-1"/>
         </div>
         <div className="post-text-container">

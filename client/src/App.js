@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from './components/layout/Navbar';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
-import TestHome from './components/pages/TestHome';
+import Home from './components/pages/Home';
 import CreateProfile from './components/pages/CreateProfile';
 import EditProfile from './components/pages/EditProfile';
 import MyProfile from './components/pages/MyProfile';
@@ -34,10 +34,10 @@ function App() {
         <Fragment>
           <Navbar/>
           <Switch>
-            <Route exact path = "/" component={TestHome}/>
+            <Route exact path = "/" component={Home}/>
             <Route exact path = "/register" component={Register}/>
             <Route exact path = "/login" component={Login}/>
-            <Route exact path = "/testhome" component={TestHome}/>
+            <Route exact path = "/home" component={Home}/>
             <Route exact path = "/createprofile" component={CreateProfile}/>
             <Route exact path = "/editprofile" component={EditProfile}/>
             <Route exact path = "/myprofile" component={MyProfile}/>
